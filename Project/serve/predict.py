@@ -71,7 +71,7 @@ def predict_fn(input_data, model):
     #         data_len - The length of the review
 
     words_vector = review_to_words(input_data)
-    data_X, data_len = convert_and_pad(word_dict,words_vector)
+    data_X, data_len = convert_and_pad(model.word_dict,words_vector)
      
 
     # Using data_X and data_len we construct an appropriate input tensor. Remember
@@ -90,6 +90,6 @@ def predict_fn(input_data, model):
 
     output = model(data)
         
-    result = round(float(output))
+    result = np.array(np.round(output))
 
     return result
